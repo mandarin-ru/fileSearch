@@ -1,6 +1,5 @@
 import java.io.*;
 import java.util.ArrayList;
-import java.util.Scanner;
 
 class FileClass {
 
@@ -15,10 +14,9 @@ class FileClass {
     ArrayList<String> searchFile () {
         ArrayList<String> arrFiles = getListFilesLog();
 
-
-        for (int i = 0; i < arrFiles.size(); i++) {
-            if (getTypeFile(arrFiles.get(i)).equals(".log")){
-                searchTextToFile(arrFiles.get(i));
+        for (String arrFile : arrFiles) {
+            if (getTypeFile(arrFile).equals(".log")) {
+                searchTextToFile(arrFile);
             }
         }
          return returnFiles;
@@ -30,10 +28,10 @@ class FileClass {
         File folder = new File(System.getProperty("user.dir") );
         File[] listOfFiles = folder.listFiles();
 
-        for (int i = 0; i < listOfFiles.length; i++) {
-            if (listOfFiles[i].isFile()) {
-                returnFilesSeach.add(listOfFiles[i].getName());
-            } else if (listOfFiles[i].isDirectory()) {
+        for (File listOfFile : listOfFiles) {
+            if (listOfFile.isFile()) {
+                returnFilesSeach.add(listOfFile.getName());
+            } else if (listOfFile.isDirectory()) {
 
             }
         }
