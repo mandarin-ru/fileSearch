@@ -4,14 +4,15 @@ public class searchFile {
 
     public static void main(String[] args)  {
         ArrayList<String> fileList = null;
-        String line = "";
-        String path = "";
+        System.out.println("Введите папку поиска. Для выхода введите q:");
 
+        Parameters parameters = new Parameters();
+        parameters.setPath(Input.inputText());
         System.out.println("Введите строку поиска. Для выхода введите q:");
 
-        while (!line.equals("q:")) {
-            line = Input.inputText();
-            FileClass file = new FileClass(line);
+         do{
+            parameters.setSearch(Input.inputText());
+            FileClass file = new FileClass(parameters);
             fileList = file.searchFile();
 
             if (fileList.size() == 0) {
@@ -23,6 +24,6 @@ public class searchFile {
                 }
             }
             System.out.println("Для выхода введите q: либо повторите поиск");
-        }
+        }while (!parameters.getSearch().equals("q:"));
     }
 }

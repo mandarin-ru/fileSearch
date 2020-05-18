@@ -7,8 +7,9 @@ class FileClass {
     private String searchToDirectory;
     private  ArrayList<String> returnFiles = new ArrayList<>();
 
-    FileClass (String searchTitle){
-        searchString = searchTitle;
+    FileClass (Parameters param){
+        searchString = param.getSearch();
+        searchToDirectory = param.getPath();
     }
 
     ArrayList<String> searchFile () {
@@ -41,7 +42,7 @@ class FileClass {
     private void searchTextToFile (String fileName){
 
         try{
-            FileInputStream fstream = new FileInputStream(System.getProperty("user.dir")+ "\\"+fileName);
+            FileInputStream fstream = new FileInputStream(searchToDirectory+ "\\"+fileName);
             BufferedReader br = new BufferedReader(new InputStreamReader(fstream));
             String strLine;
             while ((strLine = br.readLine()) != null)   {
